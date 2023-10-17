@@ -37,3 +37,32 @@
     background: rgb(252, 97, 97);
     border: 1px solid black;
 }
+
+@import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap");
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.clock {
+  font-family: 'Share Tech Mono', monospace;
+  color: #6c7a7e;
+  text-shadow: 0 0 10px #0aafe6;
+  line-height: 1.1;
+  text-align: center;
+}
+.clock-date {
+  font-size: 25px;
+}
+.clock-time {
+  font-size: 10vw;
+}
+@media screen and (max-width: 500px) {
+  .clock-date {
+    font-size: 5vw;
+  }
+  .clock-time {
+    font-size: 10vw;
+  }
+}

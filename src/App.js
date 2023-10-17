@@ -1,6 +1,7 @@
 import './App.css';
 import ComeBtn from './compounents/comeBtn';
 import OutBtn from './compounents/outBtn';
+import Clock from './compounents/clock'
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
             <button className='checkBtn'>確定</button>
           </div>
         <div class="container">
-          <div class="clock">
+        <Clock />
+        <div class="clock">
             <p class="clock-date"></p>
             <p class="clock-time"></p>
           </div>
