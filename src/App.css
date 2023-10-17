@@ -1,5 +1,39 @@
 .comeBtn {
     font-size: large;
     background-color: #bcf97b;
-
+    margin: 10px 10px 0 0;
+}
+.outBtn {
+    font-size: large;
+    background-color: rgb(121, 121, 248);
+    margin: 10px 10px 0 0;
+}
+.Btn {
+    display: flex;
+    justify-content: center;
+}
+.nameBar {
+    text-align: center;
+    box-sizing: border-box;
+}
+.centering {
+    text-align: center;
+}
+.nameBar {
+    max-width: 100%;
+    width: 12em;
+    background: #f2f2f2;
+    border: 0.5px solid #999;
+    line-height: 2;
+    font-size: 1em;
+}
+.nameBar:focus {
+    outline: none;
+    border: 2px solid #5e5d5d;
+}
+.checkBtn {
+    margin-left: 10px;
+    height: 2.75em;
+    background: rgb(252, 97, 97);
+    border: 1px solid black;
 }
