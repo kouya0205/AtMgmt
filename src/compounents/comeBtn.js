@@ -1,5 +1,5 @@
 import React from 'react'
-const comeBtn = () => {
+const ComeBtn = () => {
     const comeBtn = () => {
         alert("出勤しました");
     }
@@ -11,4 +11,4 @@ const comeBtn = () => {
     )
 };
 
-export default comeBtn
+export default ComeBtn

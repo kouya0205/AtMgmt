@@ -1,11 +1,11 @@
 import './App.css';
-import comeBtn from './compounents/comeBtn';
+import ComeBtn from './compounents/comeBtn';
 
 function App() {
   return (
     <>
     <div>
-      <comeBtn />
+      <ComeBtn />
     </div>
     </>
   );
