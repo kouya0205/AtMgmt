@@ -1,11 +1,11 @@
 import './App.css';
-import {useState} from 'react';
+import comeBtn from './compounents/comeBtn';
 
 function App() {
   return (
     <>
     <div>
-      <button onClick="">出勤</button>
+      <comeBtn />
     </div>
     </>
   );
