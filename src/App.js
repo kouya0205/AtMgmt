@@ -9,13 +9,13 @@ function App() {
   const [name, setName] = useState('');
   const [buttonsVisible, setButtonsVisble] = useState(false)
   const userData = [
-    { number: '1', name: 'Gil Maro'},
-    { number: '2', name: 'Kim Dongyeop'},
-    { number: '3', name: 'Kim Hyunwoo'},
-    { number: '4', name: 'Kim Doyoung'},
-    { number: '5', name: 'Mio Ogasahara'},
-    { number: '6', name: 'Mahiro Yoshimura'},
-    { number: '7', name: 'Kouya Ieda'},
+    { number: '1', name: '吉まろ'},
+    { number: '2', name: 'ドンヨプ様'},
+    { number: '3', name: 'ひょんぬ'},
+    { number: '4', name: 'ドヨン'},
+    { number: '5', name: '堕天使'},
+    { number: '6', name: 'まひまひ'},
+    { number: '7', name: 'こうやくん'},
   ]
   const CheckBtnClick = () =>{
     const user = userData.find((user) => user.number === inputValue);
@@ -30,19 +30,19 @@ function App() {
   return (
     <>
       <div className='centering'>
-          <h1>勤怠管理サイト</h1>
-        <div class="container">
-        <Clock />
-        </div>
-        <div>
-          <input 
-            type="tel" 
-            className='nameBar'
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
+        <div className="container">
+          <Clock />
+          <div className='wrapper'>
+            <input 
+              type="tel" 
+              className='nameBar'
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
             />
-          <button className='checkBtn' onClick={CheckBtnClick}>PUSH!<i class="fas fa-angle-right fa-position-right"></i></button>
+            <button className='checkBtn' onClick={CheckBtnClick}>PUSH!<i class="fas fa-angle-right fa-position-right"></i></button>
+          </div>
         </div>
+        
         <h2>{name}</h2>
         {buttonsVisible && (
         <div className='Btn'>
