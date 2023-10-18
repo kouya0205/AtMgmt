@@ -1,12 +1,41 @@
+.btn {
+  font-weight: 700;
+  line-height: 1.5;
+  position: relative;
+  display: inline-block;
+  padding: 1rem 4rem;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.3s;
+  text-align: center;
+  vertical-align: middle;
+  letter-spacing: 0.1em;
+  border-radius: 0.5rem;
+  text-decoration: none!important;
+}
 .comeBtn {
-    font-size: large;
-    background-color: #bcf97b;
+    font-size: 1.3rem;
+    background-color: #b8fc6f;
     margin: 10px 10px 0 0;
+    border-bottom: 5px solid #7ec731;
+    
+}
+.comeBtn:hover {
+  color: #000;
+  background: #c5fd88;
+  border-bottom: 2px solid #7ec731;
+  transform: translateY(2px);
 }
 .outBtn {
-    font-size: large;
-    background-color: rgb(121, 121, 248);
+    font-size: 1.3rem;
+    background-color: #717af9c4;
     margin: 10px 10px 0 0;
+    border-bottom: 5px solid #5a65fec4;
+}
+.outBtn:hover {
+  color: #000;
+  background: #8a92fdc4;
+  border-bottom: 2px solid #5a65fec4;
 }
 .Btn {
     display: flex;

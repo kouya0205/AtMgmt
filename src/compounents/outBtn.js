@@ -6,7 +6,7 @@ const OutBtn = () => {
     }
     return (
         <div>
-            <button onClick={outBtn} className='outBtn'>退勤</button>
+            <button onClick={outBtn} className='outBtn btn' >退勤</button>
         </div>
     )
 };

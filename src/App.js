@@ -43,7 +43,7 @@ function App() {
             />
           <button className='checkBtn' onClick={CheckBtnClick}>PUSH!<i class="fas fa-angle-right fa-position-right"></i></button>
         </div>
-        <h2>{name}</h2> {/* 名前を表示 */}
+        <h2>{name}</h2>
         {buttonsVisible && (
         <div className='Btn'>
           <ComeBtn />
