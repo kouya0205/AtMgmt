@@ -51,18 +51,21 @@
   text-shadow: 0 0 10px #0aafe6;
   line-height: 1.1;
   text-align: center;
+  margin-top: 2%;
 }
 .clock-date {
   font-size: 25px;
 }
 .clock-time {
-  font-size: 10vw;
+  font-size: 8vw;
+  margin-top: 2%;
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 560px) {
   .clock-date {
     font-size: 5vw;
   }
   .clock-time {
     font-size: 10vw;
+    margin-top: "2%";
   }
 }
