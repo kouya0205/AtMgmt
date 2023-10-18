@@ -32,10 +32,17 @@
     border: 2px solid #5e5d5d;
 }
 .checkBtn {
-    margin-left: 10px;
-    height: 2.75em;
-    background: rgb(252, 97, 97);
-    border: 1px solid black;
+  margin-left: 10px;
+  height: 2.75em;
+  background: #f1e767;
+  background: -webkit-gradient(linear, left top, left bottom, from(#f1e767), to(#feb645));
+  background: -webkit-linear-gradient(top, #f1e767 0%, #feb645 100%);
+  background: linear-gradient(to bottom, #f1e767 0%, #feb645 100%);
+}
+.checkBtn:hover {
+  background: -webkit-gradient(linear, left bottom, left top, from(#f1e767), to(#feb645));
+  background: -webkit-linear-gradient(bottom, #f1e767 0%, #feb645 100%);
+  background: linear-gradient(to top, #f1e767 0%, #feb645 100%);
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap");
