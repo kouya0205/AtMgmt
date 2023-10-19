@@ -144,7 +144,7 @@ h1 {
   }
 }
 @media screen and (max-width: 480px) {
-  .container {
+  .wrapper {
     font-size: 70%;
   }
 }

@@ -34,7 +34,7 @@ function App() {
           <Clock />
           <div className='wrapper'>
             <input 
-              type="tel" 
+              type="num"
               className='nameBar'
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
