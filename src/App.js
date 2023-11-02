@@ -17,7 +17,7 @@ function App() {
     { number: '6', name: 'まひまひ'},
     { number: '7', name: 'こうやくん'},
   ]
-  const CheckBtnClick = () =>{
+  const CheckBtnClick = () => {
     const user = userData.find((user) => user.number === inputValue);
     if (user) {
       setName(user.name); 
@@ -29,13 +29,13 @@ function App() {
   };
   return (
     <>
-      <div className='centering'>
-        <div className="container">
+      <div className='text-center'>
+        <div className="flex items-center justify-center text-center flex-col">
           <Clock />
-          <div className='wrapper'>
+          <div className='flex flex-row items-center'>
             <input 
               type="num"
-              className='nameBar'
+              className='flex 1'
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
             />

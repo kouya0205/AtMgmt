@@ -1,4 +1,4 @@
-.btn {
+/* .btn {
   font-weight: 700;
   line-height: 1.5;
   position: relative;
@@ -18,7 +18,6 @@
     background-color: #b8fc6f;
     margin: 10px 10px 0 0;
     border-bottom: 5px solid #7ec731;
-    
 }
 .comeBtn:hover {
   color: #000;
@@ -26,6 +25,7 @@
   border-bottom: 2px solid #7ec731;
   transform: translateY(2px);
 }
+
 .outBtn {
     font-size: 1.3rem;
     background-color: #717af9c4;
@@ -59,6 +59,7 @@
 .nameBar:focus {
     outline: none;
     border: 2px solid #5e5d5d;
+   
 }
 .checkBtn {
   margin-left: 10px;
@@ -75,10 +76,10 @@
 }
 h1 {
   margin-bottom: 10px
-}
+} */
 
 @import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap");
-.container {
+/* .container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -153,4 +154,4 @@ h1 {
     max-width: 100%;
   }
 }
-
+ */

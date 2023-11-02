@@ -6,7 +6,7 @@ const OutBtn = () => {
     }
     return (
         <div>
-            <button onClick={outBtn} className='outBtn btn' >退勤</button>
+            <button onClick={outBtn} className='text-xl mt-10 mr-10 border-b-[5px]  bg-[#717af9c4] hover:color-[#000] custom-button' >退勤</button>
         </div>
     )
 };
