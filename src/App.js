@@ -35,7 +35,7 @@ function App() {
           <div className='flex flex-row items-center'>
             <input 
               type="num"
-              className='flex 1'
+              className="max-w-100% w-[12em] bg-[#f2f2f2] border-[0.5px] border-solid border-[#999] leading-8 text-base hover:outline-0 hover:border-w-2 hover:border-solid hover:border-[#5e5d5d]"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
             />
@@ -45,7 +45,7 @@ function App() {
         
         <h2>{name}</h2>
         {buttonsVisible && (
-        <div className='Btn'>
+        <div className='flex justify-center'>
           <ComeBtn />
           <OutBtn />
         </div>
