@@ -51,6 +51,7 @@ function SignOutBtn() {
         <div className=' flex items-center text-center'>
         <IoLogOutOutline className='text-2xl'/>
         <p>ログアウトして戻る </p>
+        <p>お試し</p>
         </div>
         </button>
     )
