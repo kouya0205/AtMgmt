@@ -4,7 +4,11 @@ module.exports = {
     "./src/**/*.{js,jsx,tsx}"
   ],
   theme: {
-    extend: {},
+    extend: {
+      boxShadow: {
+        'custom': '0 2px 4px #4b4b4b',
+      }
+    },
   },
   plugins: [
     function({ addUtilities }) {
@@ -15,6 +19,7 @@ module.exports = {
         ".text-shadow-none": {
           textShadow: "none"
         }
+        
       };
 
       addUtilities(newUtilities);

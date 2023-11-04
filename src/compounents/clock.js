@@ -38,9 +38,9 @@ class Clock extends Component {
 
   render() {
     return (
-      <div className=" text-[#616e71] text-shadow leading-[1.1] text-center mt-0">
+      <div className=" text-[#616e71] text-shadow leading-[1.1] text-center mt-5">
         <p className=" text-[30px]">{this.state.today}</p>
-        <p className=" text-[8vw] mt-[2%] mb-[2%]">{this.state.time}</p>
+        <p className=" text-[100px] mt-[5%] mb-[5%]">{this.state.time}</p>
       </div>
     );
   }

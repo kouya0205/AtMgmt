@@ -1,12 +1,10 @@
-import './App.css';
 import Clock from './compounents/clock';
-// import React, { useState } from 'react';
 import Home from './compounents/home';
 
 function App() {
   return (
     <>
-      <div className='text-center'>
+      <div className=' relative my-[5%] mx-auto w-[600px] h-[600px] shadow-custom bg-[#f8fbfb]'>
         <div className="flex items-center justify-center text-center flex-col">
           <Clock />
           <Home />

@@ -6,6 +6,9 @@ import ComeBtn from './comeBtn';
 import OutBtn from './outBtn';
 import UserInfo from './userInfo';
 
+
+
+
 function Home() {
     const [user] = useAuthState(auth);
   return (
@@ -34,16 +37,18 @@ function SignInBtn() {
     };
 
     return (
-        <button onClick={signInGoogle}>
-            <p>グーグルログイン</p>
+        <button onClick={signInGoogle} className='bg-[#dd4b39] btn-sns mt-7'>
+            Googleでログイン
         </button>
     )
 }
 function SignOutBtn() {
 
     return (
-        <button onClick={() => auth.signOut()}>
-            <p>サインアウト</p>
+        <button onClick={() => auth.signOut()} className='btn-sns mt-7 w-[170px] bg-[#5b75b8] '>
+        <div className=' flex items-center text-center'>
+        <p>ログアウトして戻る</p>
+        </div>
         </button>
     )
 }
