@@ -50,8 +50,7 @@ function SignOutBtn() {
         <button onClick={() => auth.signOut()} className='btn-sns mt-7 w-[170px] bg-[#5b75b8] '>
         <div className=' flex items-center text-center'>
         <IoLogOutOutline className='text-2xl'/>
-        <p>ログアウトして戻る </p>
-        <p>お試し</p>
+        <p>ログアウトして戻る</p>
         </div>
         </button>
     )
