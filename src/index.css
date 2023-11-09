@@ -21,7 +21,7 @@ body {
       @apply font-bold leading-6 relative inline-block py-4 px-16 cursor-pointer select-none transition-all text-center align-middle tracking-widest rounded-lg decoration-slice
     }
     .btn-sns {
-      @apply mb-3 w-[220px] h-9 border-none rounded-sm text-white font-medium cursor-pointer
+      @apply mb-3 w-[220px] h-9 rounded-md text-white font-medium cursor-pointer
     }
   }
 
