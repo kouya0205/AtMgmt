@@ -1,7 +1,7 @@
 import { signInWithPopup } from 'firebase/auth';
-import React from 'react'
-import { auth, provider } from '../firebase';
-import { useAuthState} from 'react-firebase-hooks/auth';
+import React from 'react';
+import { auth, googleProvider, GithubProvider } from '../firebase';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import ComeBtn from './comeBtn';
 import OutBtn from './outBtn';
 import UserInfo from './userInfo';
@@ -39,16 +39,14 @@ export default Home;
 
 function SignInWithGoogle() {
     const signInGoogle = () => {
-        signInWithPopup(auth, provider);
+        signInWithPopup(auth, googleProvider);
     };
 
     return (
-        <>
         <button onClick={signInGoogle} className=' bg-white btn-sns mt-7 flex items-center border-[#D0D5DD] border-[1px]'>
             <FcGoogle className=' ml-4 text-2xl'/>
             <p className=' ml-4 text-[#a2a6ac]'>Googleでログイン</p>
-        </button> 
-        </>    
+        </button>    
     )
 }
 
@@ -56,17 +54,25 @@ function SignInWithLine() {
     const signInLine = () => {
     };
     return (
-        <>
         <button onClick={signInLine} className=' bg-white btn-sns flex items-center border-[#06C755] border-[1px]'>
             <img src='/LINE_Brand_icon.png' alt="" className=' w-6 ml-4 mr-4'/>
             <p className=' text-[#06C755]'>LINEでログイン</p>
         </button>
-        </>
     )
 }
 
 function SignInWithGithub() {
     const signInGithub = () => {
+        try {
+            signInWithPopup(auth, GithubProvider);
+          } catch (error) {
+            if (error.code === 'auth/account-exists-with-different-credential') {
+              alert('このメールアドレスは既に異なる資格情報で登録されています。');
+            } else {
+              console.error(error);
+            }
+          }
+          
     };
     return (
         <button onClick={signInGithub} className=' bg-white btn-sns flex items-center border-[1px] border-black'>
@@ -75,6 +81,7 @@ function SignInWithGithub() {
         </button>
     )
 }
+
 function SignOutBtn() {
 
     return (
