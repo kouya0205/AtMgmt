@@ -46,7 +46,7 @@ function SignInWithGoogle() {
         <>
         <button onClick={signInGoogle} className=' bg-white btn-sns mt-7 flex items-center border-[#D0D5DD] border-[1px]'>
             <FcGoogle className=' ml-4 text-2xl'/>
-            <p className=' ml-4 text-[#a2a6ac]'>Googleでログイン</p>
+            <p className=' ml-4 text-[#a2a6ac]'>Googleでログインです</p>
         </button> 
         </>    
     )
