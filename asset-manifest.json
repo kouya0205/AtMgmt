@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/AtMgmt/static/css/main.88c55e5e.css",
-    "main.js": "/AtMgmt/static/js/main.8fd721c8.js",
-    "index.html": "/AtMgmt/index.html",
-    "main.88c55e5e.css.map": "/AtMgmt/static/css/main.88c55e5e.css.map",
-    "main.8fd721c8.js.map": "/AtMgmt/static/js/main.8fd721c8.js.map"
+    "main.css": "/static/css/main.88c55e5e.css",
+    "main.js": "/static/js/main.aded0405.js",
+    "index.html": "/index.html",
+    "main.88c55e5e.css.map": "/static/css/main.88c55e5e.css.map",
+    "main.aded0405.js.map": "/static/js/main.aded0405.js.map"
   },
   "entrypoints": [
     "static/css/main.88c55e5e.css",
-    "static/js/main.8fd721c8.js"
+    "static/js/main.aded0405.js"
   ]
 }
