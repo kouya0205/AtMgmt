@@ -3,7 +3,7 @@ import ComeBtn from './comeBtn';
 import UserInfo from './userInfo';
 import OutBtn from './outBtn';
 import { IoLogOutOutline } from "react-icons/io5";
-import auth from '../firebase/auth';
+import auth from '../firebase';
 
 function SignOutBtn() {
 
