@@ -11,4 +11,4 @@ const OutBtn = () => {
     )
 };
 
-export default OutBtn
+export default OutBtn;
