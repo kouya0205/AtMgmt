@@ -2,12 +2,9 @@ import { signInWithPopup } from 'firebase/auth';
 import React from 'react'
 import { auth, Googleprovider, Githubproveider } from '../firebase';
 import { useAuthState} from 'react-firebase-hooks/auth';
-import ComeBtn from './comeBtn';
-import OutBtn from './outBtn';
-import UserInfo from './userInfo';
-import { IoLogOutOutline } from "react-icons/io5";
 import { FcGoogle } from 'react-icons/fc';
 import { AiFillGithub } from "react-icons/ai";
+import MyPage from './mypage';
 
 
 
@@ -17,12 +14,7 @@ function Home() {
     <div>
         {user ? (
             <>
-                <UserInfo />
-                <div className='flex justify-center'>
-                    <ComeBtn />
-                    <OutBtn />
-                </div>
-                <SignOutBtn />
+                <MyPage />
             </>
         ) : (
         <>
@@ -73,17 +65,6 @@ function SignInWithGithub() {
         <button onClick={signInGithub} className=' bg-white btn-sns flex items-center border-[1px] border-black'>
             <AiFillGithub className=' fill-slate-900 ml-4 text-[30px]' />
             <p className=' text-black'>Githubでログイン</p>
-        </button>
-    )
-}
-function SignOutBtn() {
-
-    return (
-        <button onClick={() => auth.signOut()} className='btn-sns mt-7 w-[170px] bg-[#5b75b8] '>
-        <div className=' flex items-center text-center'>
-        <IoLogOutOutline className='text-2xl'/>
-        <p>ログアウトして戻る</p>
-        </div>
         </button>
     )
 }
