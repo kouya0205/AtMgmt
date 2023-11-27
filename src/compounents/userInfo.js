@@ -5,11 +5,11 @@ const UserInfo = () => {
     return (
         <>
         <div className=' text-center flex flex-col items-center'>
-            <img src={auth.currentUser.photoURL} alt='' className=' rounded-full w-32 h-32'/>
-            <p>{auth.currentUser.displayName}</p>
+            <img src={auth.currentUser.photoURL} alt='' className=' rounded-full w-20 h-20'/>
+            <p>今日も偉い！{auth.currentUser.displayName}</p>
         </div>
         </>
     )
 };
 
-export default UserInfo
+export default UserInfo;
