@@ -4,7 +4,8 @@ import { auth, Googleprovider, Githubproveider } from '../firebase';
 import { useAuthState} from 'react-firebase-hooks/auth';
 import { FcGoogle } from 'react-icons/fc';
 import { AiFillGithub } from "react-icons/ai";
-import MyPage from './mypage';
+import MyPage from './myPage';
+import Clock from './clock';
 
 
 
@@ -16,6 +17,7 @@ function Home() {
         <MyPage />
         ) : (
         <>
+            <Clock />
             <SignInWithGoogle />
             <SignInWithLine />
             <SignInWithGithub />
