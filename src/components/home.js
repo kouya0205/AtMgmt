@@ -11,18 +11,17 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 
 
-
 function Home() {
     const [user] = useAuthState(auth);
     return (
         <Router>
             {user ? (
-                <>
+                <div className='flex justify-between'>
                 <Sidebar />
-                    <Routes>
-                        <Route path="/home" element={<MyPage />} />
-                    </Routes>
-                </>
+                <Routes>
+                    <Route path="/home" element={<MyPage />} />
+                </Routes>
+                </div>
                     
             ) : (
                 <div>
