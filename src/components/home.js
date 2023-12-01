@@ -16,13 +16,12 @@ function Home() {
     return (
         <Router>
             {user ? (
-                <>
+                <div className='flex justify-between'>
                 <Sidebar />
                 <Routes>
-                        <Route path="/home" element={<MyPage />} />
-                    </Routes>
-                
-                </>
+                    <Route path="/home" element={<MyPage />} />
+                </Routes>
+                </div>
                     
             ) : (
                 <div>
