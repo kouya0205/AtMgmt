@@ -15,14 +15,15 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 function Home() {
     const [user] = useAuthState(auth);
     return (
-        <>
+        <Router>
             {user ? (
-                <Router>
-                    <Sidebar />
+                <>
+                <Sidebar />
                     <Routes>
-                        <Route path="/home" component={<MyPage />} />
+                        <Route path="/home" element={<MyPage />} />
                     </Routes>
-                </Router>
+                </>
+                    
             ) : (
                 <div>
                     <Clock />
@@ -33,7 +34,7 @@ function Home() {
                     </div>
                 </div>
             )}
-        </>
+        </Router>
     )
 }
 
