@@ -6,25 +6,35 @@ import { FcGoogle } from 'react-icons/fc';
 import { AiFillGithub } from "react-icons/ai";
 import MyPage from './myPage';
 import Clock from './clock';
+import Sidebar from './sidebar';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
 
 
 
 function Home() {
     const [user] = useAuthState(auth);
-  return (
-    <>
-        {user ? (
-        <MyPage />
-        ) : (
+    return (
         <>
-            <Clock />
-            <SignInWithGoogle />
-            <SignInWithLine />
-            <SignInWithGithub />
+            {user ? (
+                <Router>
+                    <Sidebar />
+                    <Routes>
+                        <Route path="/home" component={<MyPage />} />
+                    </Routes>
+                </Router>
+            ) : (
+                <div>
+                    <Clock />
+                    <div className='flex justify-center flex-col items-center'>
+                        <SignInWithGoogle />
+                        <SignInWithLine />
+                        <SignInWithGithub />
+                    </div>
+                </div>
+            )}
         </>
-        )}
-    </>
-  )
+    )
 }
 
 export default Home;

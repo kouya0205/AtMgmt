@@ -12,8 +12,6 @@ const MyPage = () => {
             <OutBtn />
             </div>
         </>
-        
-
     )
 };
 export default MyPage;

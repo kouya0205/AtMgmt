@@ -1,6 +1,5 @@
 import React from 'react'
 import { auth } from '../firebase';
-import { IoLogOutOutline } from "react-icons/io5";
 
 
 
@@ -26,10 +25,9 @@ export default UserInfo;
 function SignOutBtn() {
     return (
         <>
-         <button onClick={() => auth.signOut()} className='btn-sns mt-7 w-[120px] bg-[#5b75b8] '>
+        <button onClick={() => auth.signOut()} className='btn-sns w-[120px] text-blue-900 hover:text-black'>
         <div className=' flex items-center text-center'>
-        <IoLogOutOutline className='text-2xl'/>
-        <p>ログアウト</p>
+        <p className=' underline hover:decoration-black'>ログアウト</p>
         </div>
         </button>
         </>

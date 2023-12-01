@@ -1,12 +1,10 @@
-import Home from './compounents/home';
+import Home from './components/home';
 
 function App() {
   return (
     <>
-      <div className=' relative my-[5%] mx-auto w-[800px] h-[800px] shadow-custom bg-[#f0f0f0]'>
-        <div className=" text-center flex-col">
+      <div>
           <Home />
-        </div>
       </div>
     </>
   );
