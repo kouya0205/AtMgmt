@@ -7,9 +7,8 @@ import { AiFillGithub } from "react-icons/ai";
 import MyPage from './myPage';
 import Clock from './clock';
 import Sidebar from './sidebar';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-
-
+import { BrowserRouter as Router, Route, Routes, } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
     const [user] = useAuthState(auth);
@@ -19,7 +18,7 @@ function Home() {
                 <div className='flex justify-between'>
                 <Sidebar />
                 <Routes>
-                    <Route path="/home" element={<MyPage />} />
+                    <Route path='/home' element={<MyPage />} />
                 </Routes>
                 </div>
                     
@@ -40,9 +39,12 @@ function Home() {
 export default Home;
 
 function SignInWithGoogle() {
+    const navigate = useNavigate();
     const signInGoogle = () => {
         signInWithPopup(auth, Googleprovider);
+        navigate('/home');    
     };
+
 
     return (
         <>
