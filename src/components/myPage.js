@@ -1,8 +1,8 @@
 import React from 'react';
-import ComeBtn from './comeBtn';
-import OutBtn from './outBtn';
-import BreakStrBtn from './breakStrBtn';
-import BreakFinBtn from './breakFinBtn';
+import ComeBtn from '../components/btn/comeBtn';
+import OutBtn from '../components/btn/outBtn';
+import BreakStrBtn from '../components/btn/breakStrBtn';
+import BreakFinBtn from '../components/btn/breakFinBtn';
 
 const MyPage = () => {
     return (

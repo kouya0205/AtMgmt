@@ -1,7 +1,7 @@
 import React from 'react';
 import { SidebarData } from './sidebarData';
 import UserInfo from './userInfo';
-import SignOutBtn from './signOutBtn';
+import SignOutBtn from './btn/signOutBtn';
 
 function Sidebar() {    
     return (
