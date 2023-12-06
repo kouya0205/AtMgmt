@@ -58,6 +58,7 @@ function SignInWithGoogle() {
 
 function SignInWithLine() {
     const signInLine = () => {
+    alert("LINEログインは現在開発中です。");
     };
     return (
         <>
