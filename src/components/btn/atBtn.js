@@ -1,0 +1,51 @@
+import React from 'react';
+import { useState } from 'react';
+import { db }from '../../firebase';
+import { collection, addDoc } from "firebase/firestore";
+
+
+
+const AtBtn = () => {
+  return (
+    <Atbtn />
+  )
+}
+
+export default AtBtn;
+
+
+const Atbtn = () => {
+const [state, setState] = useState(true);
+    const comeBtn = (async () => {
+        try {
+            setState(false);
+            alert('出勤しました');
+            const docRef = await addDoc(collection(db, 'workHours1'), {
+                comeIn: new Date(),
+            });
+            console.log(docRef.id);
+        }
+        catch (error) {
+        }
+    });
+    const outBtn = (async () => {
+        try {
+            setState(true);
+            alert('退勤しました');
+            const docRef = await addDoc(collection(db, 'workHours1'), {
+                comeOut: new Date(),
+            });
+            console.log(docRef.id);
+        }
+        catch (error) {
+        }
+    });
+
+    return (
+        <div className=' flex'>
+            <button variant="contained" onClick={comeBtn} disabled={!state} className='text-xl mt-10 mr-10 border-b-[5px] bg-[#b8fc6f] hover:text-[#000] hover:bg-[#c5fd88] hover:border-b-2 hover:border-solid hover:border-[#7ec731] hover:translate-y-px  custom-button'>出勤</button> 
+            <button variant="contained" onClick={outBtn} disabled={state} className='text-xl mt-10  border-b-[5px]  bg-[#717af9c4] hover:color-[#000] hover:bg-[#8a92fdc4] hover:border-b-2 hover:border-[#5a65fec4] hover:translate-y-px custom-button' >退勤</button>
+        </div>
+    );
+}
+
