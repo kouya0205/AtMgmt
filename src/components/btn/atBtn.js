@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { db }from '../../firebase';
 import { collection, addDoc } from "firebase/firestore";
+import { auth } from '../../firebase';
 
 
 
@@ -20,7 +21,7 @@ const [state, setState] = useState(true);
         try {
             setState(false);
             alert('出勤しました');
-            const docRef = await addDoc(collection(db, 'workHours1'), {
+            const docRef = await addDoc(collection(db, auth.currentUser.displayName), {
                 comeIn: new Date(),
             });
             console.log(docRef.id);
@@ -32,7 +33,7 @@ const [state, setState] = useState(true);
         try {
             setState(true);
             alert('退勤しました');
-            const docRef = await addDoc(collection(db, 'workHours1'), {
+            const docRef = await addDoc(collection(db, auth.currentUser.displayName), {
                 comeOut: new Date(),
             });
             console.log(docRef.id);

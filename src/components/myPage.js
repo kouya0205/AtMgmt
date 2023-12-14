@@ -1,8 +1,8 @@
 import React from 'react';
-import BreakStrBtn from '../components/btn/breakStrBtn';
-import BreakFinBtn from '../components/btn/breakFinBtn';
 import Headers from './header';
 import AtBtn from './btn/atBtn';
+import BreakBtn from './btn/breakBtn';
+import List from './list';
 
 
 
@@ -13,9 +13,9 @@ const MyPage = () => {
             <Headers />
             <div className='flex justify-center'>
             <AtBtn />
-            <BreakStrBtn />
-            <BreakFinBtn />
+            <BreakBtn />
             </div>
+            <List />
             </div>
         </>
     )
