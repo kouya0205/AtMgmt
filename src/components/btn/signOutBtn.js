@@ -12,9 +12,7 @@ function SignOutBtn() {
     return (
         <>
         <button onClick={(signOut)} className=' mb-4 text-white hover:text-black flex justify-center '>
-        <div className=' text-center'>
-        <p className=' underline hover:decoration-black'>ログアウト</p>
-        </div>
+        <p className=' underline hover:decoration-black  text-center'>ログアウト</p>
         </button>
         </>
     )
