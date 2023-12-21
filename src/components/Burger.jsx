@@ -33,7 +33,12 @@ const StyledBurger = styled.div`
     &:nth-child(3) {
       transform: ${({ open }) => open ? 'rotate(0)' : 'rotate(-45deg)'};
     }
+  @media (max-width: 768px) {
+    width: 1.5rem;
+    height: 0.2rem;
+    border-radius: 7px;
   }
+}
 `;
 
 const Burger = () => {

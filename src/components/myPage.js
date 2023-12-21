@@ -1,7 +1,5 @@
 import React from 'react';
 import Headers from './header';
-import AtBtn from './btn/atBtn';
-import BreakBtn from './btn/breakBtn';
 import List from './list';
 
 
@@ -9,12 +7,8 @@ import List from './list';
 const MyPage = () => {
     return (
         <>
-            <div className='flex flex-col justify-center'>
+            <div className='flex flex-col'>
             <Headers />
-            <div className='flex justify-center'>
-            <AtBtn />
-            <BreakBtn />
-            </div>
             <List />
             </div>
         </>

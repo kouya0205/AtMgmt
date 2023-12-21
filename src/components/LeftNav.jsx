@@ -7,6 +7,7 @@ const Ul = styled.ul`
   list-style: none;
   display: flex;
   flex-direction: column;
+  height: 100vh;
   
 
   li {
@@ -21,7 +22,7 @@ const Ul = styled.ul`
     transform: ${({ open }) => open ? 'translateX(-100%)' : 'translateX(0)'};
     top: 0;
     left: 0;
-    height: 21.2%;
+    height: 100vh;
     width: 23%;
     padding-top: 3.5rem;
     transition: transform 0.3s ease-in-out;
