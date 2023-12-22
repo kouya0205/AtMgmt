@@ -6,7 +6,7 @@ import BreakBtn from './btn/breakBtn';
 function List() {
 
     return (
-        <table className=' border-[1px] border-solid items-center ml-[5%] max-[676px]:mr-[5%]'>
+        <table className=' border-[1px] border-solid  flex justify-center md:ml-[3%]'>
 	<tbody>
         <tr>
             <td className='max-[523px]:text-[10px]'>タイムカード</td>
