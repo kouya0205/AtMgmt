@@ -48,6 +48,7 @@ const LeftNav = ({ open }) => {
       }}>ユーザー情報</li>
       <SignOutBtn />  
     </Ul>
+
     </>
     
   )

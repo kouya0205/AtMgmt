@@ -4,7 +4,7 @@ import 'react-tabs/style/react-tabs.css';
 
 const AtTab = () => {
     return (
-        <Tabs>
+        <Tabs className=" ml-[5%]">
             <TabList>
                 <Tab>第一週</Tab>
                 <Tab>第二週</Tab>
