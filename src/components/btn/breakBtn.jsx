@@ -15,11 +15,12 @@ button {
 }
     @media (max-width: 769px){
     font-size: 0.8rem;
-    padding: 0.25rem 1rem;
+    padding: 0.25rem 0.5rem;
 }
-    @media (max-width: 426px){
-    font-size: 6px;
-    margin: auto;
+    @media (max-width: 452px){
+    font-size: 7px;
+    margin: 0;
+    padding: 0;
 }
 }
 `;
@@ -62,7 +63,7 @@ const [state, setState] = useState(true);
 
     return (
         <Div >
-            <button variant="contained" onClick={breakStrBtn} disabled={!state} className='text-xl  mr-10 border-b-[3px] bg-[#e0f8ff] hover:text-[#000] hover:bg-[#e5f7fc] hover:border-b-2 hover:border-solid hover:border-[#c5e0e7bc] hover:translate-y-px  custom-button max-[523px]:mr-2 '>休憩開始</button> 
+            <button variant="contained" onClick={breakStrBtn} disabled={!state} className='text-xl  mr-10 border-b-[3px] bg-[#e0f8ff] hover:text-[#000] hover:bg-[#e5f7fc] hover:border-b-2 hover:border-solid hover:border-[#c5e0e7bc] hover:translate-y-px  custom-button max-[589px]:mr-2 '>休憩開始</button> 
             <button variant="contained" onClick={breakFinBtn} disabled={state} className='text-xl   border-b-[3px]  bg-[#e0f8ff] hover:color-[#000] hover:bg-[#e5f7fc] hover:border-b-2 hover:border-[#c5e0e7bc hover:translate-y-px custom-button' >休憩終了</button>
         </Div>
     );
