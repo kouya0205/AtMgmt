@@ -38,7 +38,7 @@ const LeftNav = ({ open }) => {
     <>
     <Ul open={open}>
       <li onClick={() => {
-        window.location.pathname = "/home";
+        window.location.pathname = "/";
       }}>Home</li>
       <li onClick={() => {
     window.location.pathname = "/atmgmt";

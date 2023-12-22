@@ -1,0 +1,6 @@
+1. save
+2. stage
+3. merge
+4. push
+5. npm run build
+6. firebase deploy

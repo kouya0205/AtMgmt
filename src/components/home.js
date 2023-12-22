@@ -18,7 +18,7 @@ function Home() {
                 <div className='flex '>
                 <Navbar />
                 <Routes>
-                    <Route path='/home' element={<MyPage />} />
+                    <Route path='/' element={<MyPage />} />
                 </Routes>
                 </div>
                     
@@ -42,7 +42,7 @@ function SignInWithGoogle() {
     const navigate = useNavigate();
     const signInGoogle = () => {
         signInWithPopup(auth, Googleprovider);
-        navigate('/home');    
+        navigate('/');    
     };
 
 
