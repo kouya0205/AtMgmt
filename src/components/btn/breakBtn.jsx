@@ -41,7 +41,7 @@ const [state, setState] = useState(true);
             setState(false);
             alert('休憩開始');
             const docRef = await addDoc(collection(db, auth.currentUser.displayName), {
-                breakStr: new Date(),
+                breakStr: Date.now(),
             });
             console.log(docRef.id);
         }
@@ -53,7 +53,7 @@ const [state, setState] = useState(true);
             setState(true);
             alert('休憩終了');
             const docRef = await addDoc(collection(db, auth.currentUser.displayName), {
-                breakFin: new Date(),
+                breakFin: Date.now(),
             });
             console.log(docRef.id);
         }

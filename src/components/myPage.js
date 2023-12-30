@@ -9,8 +9,8 @@ import Navbar from './Navbar.jsx';
 const MyPage = () => {
     return (
         <>
-            <div className=' flex flex-col justify-center md:flex-row-reverse '>
-                <div className=' md:m-0 md:mr-o'>
+            <div className=' flex flex-col min-[769px]:flex-row-reverse '>
+                <div className=''>
                     <Headers />
                     <List />
                     <AtTab />
