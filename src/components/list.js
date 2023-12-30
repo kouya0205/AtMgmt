@@ -1,9 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState} from 'react';
+import { doc, getDoc } from "firebase/firestore";
+import { db, auth } from '../firebase';
 import AtBtn from './btn/atBtn';
 import BreakBtn from './btn/breakBtn';
+import moment from 'moment';
 
 
 function List() {
+	const [comeInTime, setComeInTime] = useState('');
+	const [comeOutTime, setComeOutTime] = useState('');
+
+	useEffect(() => {
+		async function fetchTimes() {
+            const docRef = doc(db, auth.currentUser.displayName, moment().format('YYYY-MM-DD'));
+            const docSnap = await getDoc(docRef);
+
+            if (docSnap.exists()) {
+                setComeInTime(docSnap.data().comeIn);
+                setComeOutTime(docSnap.data().comeOut);
+            } else {
+                console.log("No such document!");
+            }
+        }
+
+        fetchTimes();
+    }, []);
 
     return (
         <table className=' border-[1px] border-solid  flex justify-center md:ml-[3%]'>
@@ -18,8 +39,8 @@ function List() {
 		</tr>
 		<tr>
 			<td className='max-[523px]:text-[10px]'>{toDay}</td>
-			<td className=' border-[1px] border-solid p-1  max-[523px]:text-[10px]'>a</td>
-			<td className=' border-[1px] border-solid p-1  max-[523px]:text-[10px]'>a</td>
+			<td className=' border-[1px] border-solid p-1  max-[523px]:text-[10px]'>{comeInTime}</td>
+			<td className=' border-[1px] border-solid p-1  max-[523px]:text-[10px]'>{comeOutTime}</td>
 			<td colSpan={2} className=' border-[1px] border-solid p-1  max-[523px]:text-[10px]'>a</td>
 		</tr>
 	</tbody>
@@ -38,3 +59,6 @@ const dayNum = today.getDay();
 const weekday = ["(日)", "(月)", "(火)", "(水)", "(木)", "(金)", "(土)"];
 const day = weekday[dayNum];
 const toDay = `${year}.${month}.${date} ${day}`;
+
+
+//dbからデータを取得する

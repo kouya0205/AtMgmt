@@ -1,9 +1,10 @@
 import React from 'react';
 import { useState } from 'react';
 import { db }from '../../firebase';
-import { collection, addDoc } from "firebase/firestore";
 import { auth } from '../../firebase';
 import styled from 'styled-components';
+import moment from 'moment';
+import { doc, setDoc } from "firebase/firestore";
 
 const Div = styled.div`
     display: flex;
@@ -34,24 +35,32 @@ const [state, setState] = useState(true);
         try {
             setState(false);
             alert('出勤しました');
-            const docRef = await addDoc(collection(db, auth.currentUser.displayName), {
-                comeIn: new Date(),
-            });
-            console.log(docRef.id);
+            const docRef = doc(db, auth.currentUser.displayName, moment().format('YYYY-MM-DD'));
+            await setDoc(docRef, {
+                comeIn: moment().format('HH:mm:ss')
+            }, { merge: true })
+            .then(function () {
+                console.log(docRef.id);
+            })
         }
         catch (error) {
+            console.error(error);
         }
     });
     const outBtn = (async () => {
         try {
             setState(true);
             alert('退勤しました');
-            const docRef = await addDoc(collection(db, auth.currentUser.displayName), {
-                comeOut: new Date(),
-            });
-            console.log(docRef.id);
+            const docRef = doc(db, auth.currentUser.displayName, moment().format('YYYY-MM-DD'));
+            await setDoc(docRef, {
+                comeOut: moment().format('HH:mm:ss')
+            }, { merge: true })
+            .then(function () {
+                console.log(docRef.id);
+            })
         }
         catch (error) {
+            console.error(error);
         }
     });
 
@@ -62,3 +71,4 @@ const [state, setState] = useState(true);
         </Div>
     );
 }
+
