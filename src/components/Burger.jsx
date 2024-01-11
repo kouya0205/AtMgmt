@@ -1,8 +1,6 @@
-
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import LeftNav from './LeftNav';
-
 
 const StyledBurger = styled.div`
   width: 2rem;
@@ -19,26 +17,27 @@ const StyledBurger = styled.div`
   div {
     width: 2rem;
     height: 0.25rem;
-    background-color: ${({ open }) => open ? '#333' : '#ccc'};
+    background-color: ${({ open }) => (open ? '#333' : '#ccc')};
     border-radius: 10px;
     transform-origin: 1px;
     transition: all 0.3s linear;
     &:nth-child(1) {
-      transform: ${({ open }) => open ? 'rotate(0)' : 'rotate(45deg)'};
+      transform: ${({ open }) => (open ? 'rotate(0)' : 'rotate(45deg)')};
     }
     &:nth-child(2) {
-      transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(-100%)'};
-      opacity: ${({ open }) => open ? 1 : 0};
+      transform: ${({ open }) =>
+        open ? 'translateX(0)' : 'translateX(-100%)'};
+      opacity: ${({ open }) => (open ? 1 : 0)};
     }
     &:nth-child(3) {
-      transform: ${({ open }) => open ? 'rotate(0)' : 'rotate(-45deg)'};
+      transform: ${({ open }) => (open ? 'rotate(0)' : 'rotate(-45deg)')};
     }
   }
 `;
 
 const Burger = () => {
-  const [open, setOpen] = useState(false)
-  
+  const [open, setOpen] = useState(false);
+
   return (
     <>
       <StyledBurger open={open} onClick={() => setOpen(!open)}>
@@ -46,9 +45,9 @@ const Burger = () => {
         <div />
         <div />
       </StyledBurger>
-      <LeftNav open={open}/>
+      <LeftNav open={open} />
     </>
-  )
-}
+  );
+};
 
-export default Burger
+export default Burger;

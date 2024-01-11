@@ -24,7 +24,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
@@ -49,6 +49,12 @@
   },
   "devDependencies": {
     "gh-pages": "^6.0.0",
+    "jest": "^27.5.1",
     "tailwindcss": "^3.3.3"
-  }
+  },
+  "description": "勤怠管理です",
+  "main": "tailwind.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

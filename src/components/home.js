@@ -1,82 +1,86 @@
 import { signInWithPopup } from 'firebase/auth';
-import React from 'react'
+import React from 'react';
 import { auth, Googleprovider, Githubproveider } from '../firebase';
-import { useAuthState} from 'react-firebase-hooks/auth';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { FcGoogle } from 'react-icons/fc';
-import { AiFillGithub } from "react-icons/ai";
+import { AiFillGithub } from 'react-icons/ai';
 import MyPage from './myPage';
 import Clock from './clock';
-import { BrowserRouter as Router, Route, Routes, } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 function Home() {
-    const [user] = useAuthState(auth);
-    return (
-        <Router>
-            {user ? (
-                <Routes>
-                    <Route path='/' element={<MyPage />} />
-                </Routes>
-                    
-            ) : (
-                <div>
-                    <Clock />
-                    <div className='flex justify-center flex-col items-center'>
-                        <SignInWithGoogle />
-                        <SignInWithLine />
-                        <SignInWithGithub />
-                    </div>
-                </div>
-            )}
-        </Router>
-    )
+  const [user] = useAuthState(auth);
+  return (
+    <Router>
+      {user ? (
+        <Routes>
+          <Route path="/" element={<MyPage />} />
+        </Routes>
+      ) : (
+        <div>
+          <Clock />
+          <div className="flex justify-center flex-col items-center">
+            <SignInWithGoogle />
+            <SignInWithLine />
+            <SignInWithGithub />
+          </div>
+        </div>
+      )}
+    </Router>
+  );
 }
 
 export default Home;
 
 function SignInWithGoogle() {
-    const navigate = useNavigate();
-    const signInGoogle = () => {
-        signInWithPopup(auth, Googleprovider);
-        navigate('/');    
-    };
+  const navigate = useNavigate();
+  const signInGoogle = () => {
+    signInWithPopup(auth, Googleprovider);
+    navigate('/');
+  };
 
-
-    return (
-        <>
-        <button onClick={signInGoogle} className=' bg-white btn-sns mt-7 flex items-center border-[#D0D5DD] border-[1px]'>
-            <FcGoogle className=' ml-4 text-2xl'/>
-            <p className=' ml-4 text-[#a2a6ac]'>Googleログイン</p>
-        </button> 
-        </>    
-    )
+  return (
+    <>
+      <button
+        onClick={signInGoogle}
+        className=" bg-white btn-sns mt-7 flex items-center border-[#D0D5DD] border-[1px]"
+      >
+        <FcGoogle className=" ml-4 text-2xl" />
+        <p className=" ml-4 text-[#a2a6ac]">Googleログイン</p>
+      </button>
+    </>
+  );
 }
 
 function SignInWithLine() {
-    const signInLine = () => {
-    alert("LINEログインは現在開発中です。");
-    };
-    return (
-        <>
-        <button onClick={signInLine} className=' bg-white btn-sns flex items-center border-[#06C755] border-[1px]'>
-            <img src='/LINE_Brand_icon.png' alt="" className=' w-6 ml-4 mr-4'/>
-            <p className=' text-[#06C755]'>LINEログイン</p>
-        </button>
-        </>
-    )
+  const signInLine = () => {
+    alert('LINEログインは現在開発中です。');
+  };
+  return (
+    <>
+      <button
+        onClick={signInLine}
+        className=" bg-white btn-sns flex items-center border-[#06C755] border-[1px]"
+      >
+        <img src="/LINE_Brand_icon.png" alt="" className=" w-6 ml-4 mr-4" />
+        <p className=" text-[#06C755]">LINEログイン</p>
+      </button>
+    </>
+  );
 }
 
 function SignInWithGithub() {
-    const signInGithub = () => {
-        signInWithPopup(auth, Githubproveider);
-    };
-    return (
-        <button onClick={signInGithub} className=' bg-white btn-sns flex items-center border-[1px] border-black'>
-            <AiFillGithub className=' fill-slate-900 ml-4 text-[30px]' />
-            <p className=' text-black'>Githubログイン</p>
-        </button>
-    )
+  const signInGithub = () => {
+    signInWithPopup(auth, Githubproveider);
+  };
+  return (
+    <button
+      onClick={signInGithub}
+      className=" bg-white btn-sns flex items-center border-[1px] border-black"
+    >
+      <AiFillGithub className=" fill-slate-900 ml-4 text-[30px]" />
+      <p className=" text-black">Githubログイン</p>
+    </button>
+  );
 }
-
-
-
