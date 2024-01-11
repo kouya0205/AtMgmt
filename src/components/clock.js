@@ -15,7 +15,7 @@ class Clock extends Component {
     const month = (d.getMonth() + 1).toString().padStart(2, '0');
     const date = d.getDate().toString().padStart(2, '0');
     const dayNum = d.getDay();
-    const weekday = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+    const weekday = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
     const day = weekday[dayNum];
     const hour = d.getHours().toString().padStart(2, '0');
     const min = d.getMinutes().toString().padStart(2, '0');
