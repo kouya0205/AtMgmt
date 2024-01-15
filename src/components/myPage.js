@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Headers from './header';
 import List from './list';
 import AtTab from './tab';
@@ -8,11 +8,13 @@ import { db } from '../firebase';
 
 const MyPage = () => {
   const [Time, setTime] = useState([]);
-  const getUserData = collection(db, 'users');
-  getDocs(getUserData).then((querySnapshot) => {
-    console.log(querySnapshot.docs.map((doc) => doc.data()));
-    setTime(querySnapshot.docs.map((doc) => doc.data()));
-  });
+  useEffect(() => {
+    const getUserData = collection(db, 'users');
+    getDocs(getUserData).then((querySnapshot) => {
+      console.log(querySnapshot.docs.map((doc) => doc.data()));
+      setTime(querySnapshot.docs.map((doc) => doc.data()));
+    });
+  }, [setTime]);
 
   return (
     <>
@@ -21,6 +23,7 @@ const MyPage = () => {
           <Headers />
           {Time.map((time) => (
             <List
+              key={time.id}
               comeInTime={time.comeIn}
               comeOutTime={time.comeOut}
               breakStrTime={time.breakStr}
