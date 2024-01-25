@@ -3,18 +3,19 @@ import Headers from './header';
 import List from './list';
 import AtTab from './tab';
 import Navbar from './Navbar.jsx';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, onSnapshot } from 'firebase/firestore';
 import { db } from '../firebase';
 
 const MyPage = () => {
   const [Time, setTime] = useState([]);
   useEffect(() => {
     const getUserData = collection(db, 'users');
-    getDocs(getUserData).then((querySnapshot) => {
+    //リアルタイムデータを取得
+    onSnapshot(getUserData, (querySnapshot) => {
       console.log(querySnapshot.docs.map((doc) => doc.data()));
       setTime(querySnapshot.docs.map((doc) => doc.data()));
     });
-  }, [setTime]);
+  }, []);
 
   return (
     <>
