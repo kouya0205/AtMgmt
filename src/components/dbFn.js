@@ -22,6 +22,8 @@ export const SetUserData = async (props) => {
       userDocRef,
       {
         [props.data]: moment().format('HH:mm:ss'),
+        state: props.state,
+        states: props.states,
       },
       { merge: true }
     ).then(() => {

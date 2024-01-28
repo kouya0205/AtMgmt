@@ -1,7 +1,9 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { SetUserData } from '../dbFn';
+import { SetUserData, getUserId } from '../dbFn';
+import { db } from '../../firebase';
+import { doc, getDoc } from 'firebase/firestore';
 
 const Div = styled.div`
   display: flex;
@@ -24,19 +26,26 @@ const AtBtn = () => {
 export default AtBtn;
 
 const Atbtn = () => {
-  const initialState = JSON.parse(localStorage.getItem('atbtnState')) || true;
-  const [state, setState] = useState(initialState);
+  const [state, setState] = useState(null);
 
   useEffect(() => {
-    // Save the state to localStorage whenever it changes
-    localStorage.setItem('atbtnState', JSON.stringify(state));
-  }, [state]);
+    // Firestoreから以前のstateを取得
+    const fetchState = async () => {
+      const userId = await getUserId();
+      const userDocRef = doc(db, 'users', userId);
+      const docSnap = await getDoc(userDocRef);
+      if (docSnap.exists()) {
+        setState(docSnap.data().state);
+      }
+    };
+    fetchState();
+  }, []);
 
   const comeBtn = async () => {
     try {
-      setState(false);
+      setState('in');
       alert('出勤しました');
-      await SetUserData({ data: 'comeIn' });
+      await SetUserData({ data: 'comeIn', state: 'in', states: 'end' });
     } catch (error) {
       console.log(error);
     }
@@ -44,9 +53,9 @@ const Atbtn = () => {
 
   const outBtn = async () => {
     try {
-      setState(true);
+      setState('out');
       alert('退勤しました');
-      await SetUserData({ data: 'comeOut' });
+      await SetUserData({ data: 'comeOut', state: 'out', states: 'start' });
     } catch (error) {
       console.error(error);
     }
@@ -57,7 +66,7 @@ const Atbtn = () => {
       <button
         variant="contained"
         onClick={comeBtn}
-        disabled={!state}
+        disabled={state === 'in'}
         className="text-xl  mr-10 border-b-[3px] bg-[#b8fc6f] hover:text-[#000] hover:bg-[#c5fd88] hover:border-b-2 hover:border-solid hover:border-[#7ec731] hover:translate-y-px  custom-button ml-2 max-[523px]:mr-2 max-[523px]:text-[0.3rem]"
       >
         出勤
@@ -65,7 +74,7 @@ const Atbtn = () => {
       <button
         variant="contained"
         onClick={outBtn}
-        disabled={state}
+        disabled={state === 'out'}
         className="text-xl   border-b-[3px]  bg-[#717af9c4] hover:color-[#000] hover:bg-[#8a92fdc4] hover:border-b-2 hover:border-[#5a65fec4] hover:translate-y-px custom-button"
       >
         退勤

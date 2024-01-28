@@ -1,8 +1,9 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-
-import { SetUserData } from '../dbFn';
+import { SetUserData, getUserId } from '../dbFn';
+import { db } from '../../firebase';
+import { doc, getDoc } from 'firebase/firestore';
 
 const Div = styled.div`
   display: flex;
@@ -30,21 +31,34 @@ const BreakBtn = () => {
 export default BreakBtn;
 
 const Breakbtn = () => {
-  const [state, setState] = useState(true);
+  const [states, setState] = useState(null);
+  useEffect(() => {
+    // Firestoreから以前のstateを取得
+    const fetchState = async () => {
+      const userId = await getUserId();
+      const userDocRef = doc(db, 'users', userId);
+      const docSnap = await getDoc(userDocRef);
+      if (docSnap.exists()) {
+        setState(docSnap.data().states);
+      }
+    };
+    fetchState();
+  }, []);
+
   const breakStrBtn = async () => {
     try {
-      setState(false);
+      setState('start');
       alert('休憩開始');
-      await SetUserData({ data: 'breakStr' });
+      await SetUserData({ data: 'breakStr', state: 'in', states: 'start' });
     } catch (error) {
       console.log(error);
     }
   };
   const breakFinBtn = async () => {
     try {
-      setState(true);
+      setState('end');
       alert('休憩終了');
-      await SetUserData({ data: 'breakFin' });
+      await SetUserData({ data: 'breakFin', state: 'in', states: 'end' });
     } catch (error) {
       console.log(error);
     }
@@ -55,7 +69,7 @@ const Breakbtn = () => {
       <button
         variant="contained"
         onClick={breakStrBtn}
-        disabled={!state}
+        disabled={states === 'start'}
         className="text-xl  mr-10 border-b-[3px] bg-[#e0f8ff] hover:text-[#000] hover:bg-[#e5f7fc] hover:border-b-2 hover:border-solid hover:border-[#c5e0e7bc] hover:translate-y-px  custom-button max-[589px]:mr-2 "
       >
         休憩開始
@@ -63,7 +77,7 @@ const Breakbtn = () => {
       <button
         variant="contained"
         onClick={breakFinBtn}
-        disabled={state}
+        disabled={states === 'end'}
         className="text-xl   border-b-[3px]  bg-[#e0f8ff] hover:color-[#000] hover:bg-[#e5f7fc] hover:border-b-2 hover:border-[#c5e0e7bc hover:translate-y-px custom-button"
       >
         休憩終了
