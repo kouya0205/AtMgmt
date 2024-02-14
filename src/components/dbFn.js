@@ -16,10 +16,15 @@ export const getUserId = async () => {
 
 export const SetUserData = async (props) => {
   try {
+    const date = new Date();
+    const dateId = `${date.getFullYear()}-${
+      date.getMonth() + 1
+    }-${date.getDate()}`;
     const userId = await getUserId();
     const userDocRef = doc(db, 'users', userId);
+    const dateDocRef = doc(userDocRef, 'dates', dateId);
     await setDoc(
-      userDocRef,
+      dateDocRef,
       {
         [props.data]: moment().format('HH:mm:ss'),
         state: props.state,

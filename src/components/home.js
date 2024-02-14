@@ -1,6 +1,6 @@
-import { signInWithPopup } from 'firebase/auth';
-import React from 'react';
-import { auth, Googleprovider, Githubproveider } from '../firebase';
+import { signInWithPopup, onAuthStateChanged } from 'firebase/auth';
+import React, { useState, useEffect } from 'react';
+import { auth, Googleprovider, Githubproveider, db } from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { FcGoogle } from 'react-icons/fc';
 import { AiFillGithub } from 'react-icons/ai';
@@ -8,9 +8,12 @@ import MyPage from './myPage';
 import Clock from './clock';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { Timestamp, collection, doc, getDoc, setDoc } from 'firebase/firestore';
+import { getUserId } from './dbFn';
 
 function Home() {
   const [user] = useAuthState(auth);
+
   return (
     <Router>
       {user ? (
@@ -35,11 +38,53 @@ export default Home;
 
 function SignInWithGoogle() {
   const navigate = useNavigate();
-  const signInGoogle = () => {
-    signInWithPopup(auth, Googleprovider);
-    navigate('/');
-  };
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        setUser(user);
+        const date = new Date();
+        const userId = await getUserId();
+        const userDocRef = doc(db, 'users', userId);
+        const dateCollection = collection(userDocRef, 'dates');
+        const dateId = `${date.getFullYear()}-${
+          date.getMonth() + 1
+        }-${date.getDate()}`;
+        const dateDocRef = doc(dateCollection, dateId);
+        const docSnap = await getDoc(dateDocRef);
+        if (!docSnap.exists()) {
+          await setDoc(
+            dateDocRef,
+            {
+              comeIn: '00:00:00',
+              comeOut: '00:00:00',
+              breakStr: '00:00:00',
+              breakFin: '00:00:00',
+              state: 'out',
+              states: 'end',
+              Timestamp: Timestamp.now(),
+            },
+            { merge: true }
+          );
+        }
+      } else {
+        setUser(null);
+      }
+    });
+    return () => unsubscribe();
+  }, []);
 
+  const signInGoogle = async () => {
+    try {
+      await signInWithPopup(auth, Googleprovider);
+      navigate('/');
+    } catch (err) {
+      console.error(err);
+    }
+  };
+  if (user) {
+    return <MyPage />;
+  }
   return (
     <>
       <button

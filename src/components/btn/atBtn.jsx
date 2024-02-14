@@ -3,7 +3,15 @@ import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { SetUserData, getUserId } from '../dbFn';
 import { db } from '../../firebase';
-import { doc, getDoc } from 'firebase/firestore';
+import {
+  doc,
+  getDoc,
+  collection,
+  query,
+  orderBy,
+  limit,
+  Timestamp,
+} from 'firebase/firestore';
 
 const Div = styled.div`
   display: flex;
@@ -26,16 +34,27 @@ const AtBtn = () => {
 export default AtBtn;
 
 const Atbtn = () => {
-  const [state, setState] = useState(null);
+  const [state, setState] = useState('out');
 
   useEffect(() => {
     // Firestoreから以前のstateを取得
     const fetchState = async () => {
       const userId = await getUserId();
       const userDocRef = doc(db, 'users', userId);
-      const docSnap = await getDoc(userDocRef);
-      if (docSnap.exists()) {
-        setState(docSnap.data().state);
+      const dateCollectionRef = collection(userDocRef, 'dates');
+      const q = query(
+        dateCollectionRef,
+        orderBy('createdAt', 'desc'),
+        limit(1)
+      );
+
+      const querySnapshot = await getDoc(q);
+      if (!querySnapshot.exists()) {
+        querySnapshot.forEach((doc) => {
+          setState(querySnapshot.data().state);
+        });
+      } else {
+        setState('out');
       }
     };
     fetchState();
@@ -45,7 +64,12 @@ const Atbtn = () => {
     try {
       setState('in');
       alert('出勤しました');
-      await SetUserData({ data: 'comeIn', state: 'in', states: 'end' });
+      await SetUserData({
+        data: 'comeIn',
+        state: 'in',
+        states: 'end',
+        Timestamp: Timestamp.now(),
+      });
     } catch (error) {
       console.log(error);
     }
@@ -55,7 +79,12 @@ const Atbtn = () => {
     try {
       setState('out');
       alert('退勤しました');
-      await SetUserData({ data: 'comeOut', state: 'out', states: 'start' });
+      await SetUserData({
+        data: 'comeOut',
+        state: 'out',
+        states: 'start',
+        Timestamp: Timestamp.now(),
+      });
     } catch (error) {
       console.error(error);
     }
